@@ -1,0 +1,16 @@
+version: '3'
+services:
+  pyspark:
+    build: .
+    volumes:
+      - ./data:/data
+    networks:
+      pyspark_net:
+        ipv4_address: 172.28.4.4
+networks:
+  pyspark_net:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.28.4.0/24
